@@ -38,7 +38,7 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   optArticleAuthorSelector = '.post-author',
-  optTagsListSelector = '.tags.list';
+  optTagsListSelector = '.tags-list';
 
 function generateTitleLinks(customSelector=''){
   let html='';
@@ -120,10 +120,12 @@ function generateTags(){
   }
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector('.tags');
+
   let allTagsHTML = '';
   
+
   for(let tag in allTags){
-   allTagsHTML += tag + ' (' + allTags[tag] + ') ';
+    allTagsHTML += tag + ' (' + allTags[tag] + ') ';
     
   }
   tagList.innerHTML = allTagsHTML;
