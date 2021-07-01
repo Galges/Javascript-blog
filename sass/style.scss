@@ -52,6 +52,7 @@ body {
   flex: 1 0 0;
 }
 
+
 .posts {
   flex: 2 0 0;
 }
@@ -117,4 +118,10 @@ body {
   p {
     margin: 0 10px 0 0;
   }
+  
+}
+.list-tags {
+  .font-size-5{
+  color: yellow;
+} 
 }

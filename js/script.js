@@ -1,5 +1,27 @@
 'use strict';
+function calculateTagsParams(tags) {
+  const params = {
+    min: 999999,
+    max: 0,
+  };
 
+  for (let tag in tags) {
+    if (tags[tag] > params.max) {
+      params.max = tags[tag];
+    }
+    if (tags[tag] < params.min) {
+      params.min = tags[tag];
+    }
+  }
+  return params;
+}
+function calculateTagClass(count, params) {
+  const normalizedCount = count - params.min,
+    normalizedMax = params.max - params.min,
+    percentage = normalizedCount / normalizedMax,
+    classNumber = Math.floor(percentage * (optCloudClassCount - 1) + 1);
+  return optCloudClassPrefix + classNumber;
+}
 
 function titleClickHandler(event){
   event.preventDefault();
@@ -38,8 +60,9 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   optArticleAuthorSelector = '.post-author',
-  optTagsListSelector = '.tags-list';
-
+  optTagsListSelector = '.tags-list',
+  optCloudClassCount = '5',
+  optCloudClassPrefix = 'tag-size-';
 function generateTitleLinks(customSelector=''){
   let html='';
   /* remove contents of titleList */
@@ -120,15 +143,20 @@ function generateTags(){
   }
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector('.tags');
-
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams:' , tagsParams)
   let allTagsHTML = '';
   
 
   for(let tag in allTags){
-    allTagsHTML += tag + ' (' + allTags[tag] + ') ';
+    
+    const tagLinkHTML = '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) +'" > <span>' + tag +'   </span></a></li>';
+    console.log('tagLinkHTML:', tagLinkHTML)
+    allTagsHTML += tagLinkHTML
     
   }
   tagList.innerHTML = allTagsHTML;
+  
   
 }
 
@@ -184,6 +212,7 @@ function addClickListenersToTags(){
 addClickListenersToTags();
 
 function generateAuthors(){
+  let allAuthors = {};
   const articles = document.querySelectorAll(optArticleSelector);
 
   for(let article of articles){
@@ -194,14 +223,29 @@ function generateAuthors(){
     console.log(author);
     
     const articleAuthor = article.getAttribute('data-author');
+    const tagsParams = calculateTagsParams(allAuthors);
+    console.log('tagsParams:' , tagsParams)
+    let allAuthorsHTML = '';
     console.log(optArticleAuthorSelector);
     const linkHTML = '<a href="#author-' + articleAuthor + '"><span>' + articleAuthor+ '</span></a>';
      // html = html + linkHTML;
+     if (!allAuthors.hasOwnProperty(articleAuthor)) {
+      allAuthors[articleAuthor] = 1;
+    } else {
+      allAuthors[articleAuthor]++;
+    }
       author.innerHTML = linkHTML;
+      }
       
-  }
+        
+    
+    for (let author in allAuthors) {
+      const authorLinkHTML = '<a href="#author-' + author + '"class="' +  calculateTagClass(allAuthors[author], tagsParams) +'" > <span>' + author +' </span></a>';
+      allAuthorsHTML += authorLinkHTML
+  
 }
-
+articleAuthor.innerHTML = authorsLinkHTML;
+}
 generateAuthors();
 
 function authorClickHandler(event) {
