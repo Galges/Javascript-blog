@@ -231,8 +231,9 @@ function generateAuthors(){
       let allAuthorsHTML = '';
     
     for (let author in allAuthors) {
-      const authorLinkHTML = '<a href="#author-' + articleAuthor + '"class="' +  calculateTagClass(allAuthors[author], authorsParams) +'" > <span>' + articleAuthor +' </span></a>';
+      const authorLinkHTML = '<a href="#author-' + author + '"class="' +  calculateTagClass(allAuthors[author], authorsParams) +'" > <span>' + author +' </span></a>';
       allAuthorsHTML += authorLinkHTML
+      
     }
       authorsList.innerHTML = allAuthorsHTML;
 }
@@ -267,4 +268,3 @@ function addClickListenersToAuthors() {
 addClickListenersToAuthors();
 
 
-  
