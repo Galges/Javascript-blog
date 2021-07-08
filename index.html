@@ -33,7 +33,7 @@
 				  </ul>
 				</div>
 			  </article>        
-			  <article class="post" id="article-2" data-tags="Oct green " data-author="Mateusz G">
+			  <article class="post" id="article-2" data-tags="Oct green" data-author="Mateusz G">
 				<h3 class="post-title">Article 2</h3>
 				<p class="post-author"></p>
 				<div class="post-content">
@@ -50,7 +50,7 @@
 				  </ul>
 				</div>
 			  </article>        
-			  <article class="post" id="article-3" data-tags="Oct " data-author="Krystyna H">
+			  <article class="post" id="article-3" data-tags="Oct" data-author="Krystyna H">
 				<h3 class="post-title">Article 3</h3>
 				<p class="post-author"></p>
 				<div class="post-content">
@@ -66,7 +66,7 @@
 				  </ul>
 				</div>
 			  </article>        
-			  <article class="post" id="article-4" data-tags="Oct " data-author="Henryk W">
+			  <article class="post" id="article-4" data-tags="Oct" data-author="Henryk W">
 				<h3 class="post-title">Article 4</h3>
 				<p class="post-author"></p>
 				<div class="post-content">
@@ -83,7 +83,7 @@
 				  </ul>
 				</div>
 			  </article>
-			  <article class="post" id="article-5" data-tags=" green black" data-author="Małgorzata K">
+			  <article class="post" id="article-5" data-tags="green black" data-author="Małgorzata K">
 				<h3 class="post-title">Article 5</h3>
 				<p class="post-author"></p>
 				<div class="post-content">
@@ -100,7 +100,7 @@
 				  </ul>
 				</div>
 			  </article>        
-			  <article class="post" id="article-6" data-tags="Oct green " data-author="Aleksandra A">
+			  <article class="post" id="article-6" data-tags="Oct green" data-author="Aleksandra A">
 				<h3 class="post-title">Article 6</h3>
 				<p class="post-author"></p>
 				<div class="post-content">
@@ -117,7 +117,7 @@
 				  </ul>
 				</div>
 			  </article>
-			  <article class="post" id="article-7" data-tags="Oct blue " data-author="Piotr G">
+			  <article class="post" id="article-7" data-tags="Oct blue" data-author="Piotr G">
 				<h3 class="post-title">Article 7</h3>
 				<p class="post-author"></p>
 				<div class="post-content">
@@ -134,7 +134,7 @@
 				  </ul>
 				</div>
 			  </article>
-			  <article class="post" id="article-8" data-tags="Oct " data-author="Krystian C">
+			  <article class="post" id="article-8" data-tags="Oct green" data-author="Krystian C">
 				<h3 class="post-title">Article 8</h3>
 				<p class="post-author"></p>
 				<div class="post-content">
@@ -151,7 +151,7 @@
 				  </ul>
 				</div>
 			  </article>
-			  <article class="post" id="article-9" data-tags="Oct yellow " data-author="Katarzyna B">
+			  <article class="post" id="article-9" data-tags="Oct yellow" data-author="Katarzyna B">
 				<h3 class="post-title">Article 9</h3>
 				<p class="post-author"></p>
 				<div class="post-content">
@@ -168,7 +168,7 @@
 				  </ul>
 				</div>
 			  </article>
-			  <article class="post" id="article-10" data-tags="Oct blue " data-author="Oleg A">
+			  <article class="post" id="article-10" data-tags="Oct blue" data-author="Oleg A">
 				<h3 class="post-title">Article 10</h3>
 				<p class="post-author"></p>
 				<div class="post-content">
@@ -222,28 +222,29 @@
 		  </main>
 		</div>
 	  </div>
-	  <script id="template-article-link" type="text/x-handlebars-template">
+
+	<script id="template-article-link" type="text/x-handlebars-template">
 		<li><a href="#{{ id }}"><span>{{ title }}</span></a></li>
-	  </script>
-	  <script id="template-tag-link" type="text/x-handlebars-template">
-		<li><a href="#tag-{{ id }}"><span>{{ title }}&nbsp</span></a></li>
-	  </script>
-	  <script id="template-author-link" type="text/x-handlebars-template">
-	  <a href="#author-{{ id }}"><span>{{ title }}&nbsp</span></a>
-	  </script>
-	  <script id="template-tag-cloud" type="text/x-handlebars-template">
-	  {{#each tags}}
-	  <li><a href="#tag-{{tag}}" class={{className}}>{{tag}} ({{count}})</a></li>
-	  {{/each}}
 	</script>
-	  <script id="template-author-cloud" type="text/x-handlebars-template">
-		{{#each authors}}
-		<li>
-		  <a href="#author-{{author}}" class={{className}}>{{author}}</a>
-		</li>
-		{{/each}}
-	  </script>
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.js"></script>
+
+	<script id="template-tag-link" type="text/x-handlebars-template">
+		<li><a href="#tag-{{ id }}"><span>{{ title }}&nbsp</span></a></li>
+	</script>
+
+	<script id="template-author-link" type="text/x-handlebars-template">
+	  	<a href="#author-{{ id }}"><span>{{ title }}&nbsp</span></a>
+	</script>
+
+	<script id="template-tag-cloud" type="text/x-handlebars-template">
+	  	{{#each tags}}
+	  	<li><a href="#tag-{{tag}}" class={{className}}>{{tag}} </a></li>{{/each}}
+	</script>
+
+	<script id="template-author-cloud" type="text/x-handlebars-template">{{#each authors}}<li>
+		  <a href="#author-{{author}}" class={{className}}>{{author}}</a></li>{{/each}}
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.js"></script>
 	<script src="js/script.js"></script>
 	
 </body>

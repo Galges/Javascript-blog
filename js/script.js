@@ -159,11 +159,9 @@ function generateTags(){
  }
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector('.tags'),
-  allTagsData = {tags: []},
-  tagsParams = calculateTagsParams(allTags);
+    allTagsData = {tags: []},
+    tagsParams = calculateTagsParams(allTags);
   console.log('tagsParams:' , tagsParams)
-
-  
 
   for (let tag in allTags) {
     allTagsData.tags.push({
@@ -239,18 +237,19 @@ addClickListenersToTags();
       authorsParams = calculateTagsParams(allAuthors),
       allAuthorsHTML = {authors: []};
   
-    for (let author in allAuthors) {
-      allAuthorsHTML.authors.push({
-        author: author,
-        className: calculateTagClass(allAuthors[author], authorsParams),
-      });
-    }
+      for (let author in allAuthors) {
+        allAuthorsHTML.authors.push({
+          author: author,
+          className : calculateTagClass(allAuthors[author], authorsParams),
+        });
+      }
     authorsList.innerHTML = templates.cloudAuthorLink(allAuthorsHTML);
   }
 generateAuthors();
 
 function authorClickHandler(event) {
   event.preventDefault();
+
   const clickedElement = this,
     href = clickedElement.getAttribute('href'),
     author = href.replace('#author-', ''),
