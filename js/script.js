@@ -239,7 +239,7 @@ addClickListenersToTags();
   
       for (let author in allAuthors) {
         allAuthorsHTML.authors.push({
-          author: author,
+          author: [author],
           className : calculateTagClass(allAuthors[author], authorsParams),
         });
       }
